@@ -2361,7 +2361,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "Kubernetes cluster monitoring (via Prometheus)",
+  "title": "Kubernetes Cluster Monitoring",
   "uid": "AW9937QMz",
-  "version": 4
+  "version": 5
 }
