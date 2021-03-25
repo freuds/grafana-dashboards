@@ -2294,7 +2294,8 @@
   "schemaVersion": 27,
   "style": "dark",
   "tags": [
-    "kubernetes"
+    "Kubernetes",
+    "Cluster"
   ],
   "templating": {
     "list": [
@@ -2362,6 +2363,6 @@
   },
   "timezone": "browser",
   "title": "Kubernetes Cluster Monitoring",
-  "uid": "",
+  "uid": "zEfze4eR",
   "version": 2
 }
