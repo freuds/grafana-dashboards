@@ -1369,7 +1369,10 @@
     "refresh": "1m",
     "schemaVersion": 27,
     "style": "dark",
-    "tags": [],
+    "tags": [
+      "kubernetes",
+      "volumes"
+    ],
     "templating": {
       "list": [
         {
@@ -1455,6 +1458,6 @@
     "timepicker": {},
     "timezone": "",
     "title": "kubernetes-persistent-volumes",
-    "uid": "peR80gTGk",
+    "uid": "peR80gTGd",
     "version": 2
   }
