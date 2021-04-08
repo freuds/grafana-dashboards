@@ -871,7 +871,7 @@
         "current": true,
         "max": false,
         "min": false,
-        "show": true,
+        "show": false,
         "total": false,
         "values": true
       },
@@ -969,7 +969,7 @@
         "current": false,
         "max": false,
         "min": false,
-        "show": true,
+        "show": false,
         "total": false,
         "values": false
       },
@@ -1066,7 +1066,7 @@
         "current": false,
         "max": false,
         "min": false,
-        "show": true,
+        "show": false,
         "total": false,
         "values": false
       },
@@ -1166,7 +1166,7 @@
         "current": true,
         "max": false,
         "min": false,
-        "show": true,
+        "show": false,
         "total": false,
         "values": true
       },
@@ -1188,10 +1188,12 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "topk(5,sum(container_memory_usage_bytes{image!=\"\"}) by (pod_name))",
+          "exemplar": true,
+          "expr": "topk(5,sum(container_memory_usage_bytes{image!=\"\"}) by (pod))",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 10
         }
@@ -1369,7 +1371,7 @@
         "current": false,
         "max": false,
         "min": true,
-        "show": true,
+        "show": false,
         "total": false,
         "values": true
       },
