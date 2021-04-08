@@ -16,7 +16,8 @@
   "editable": true,
   "gnetId": 6157,
   "graphTooltip": 0,
-  "iteration": 1617891582384,
+  "id": 52,
+  "iteration": 1617898931596,
   "links": [],
   "panels": [
     {
@@ -54,10 +55,6 @@
       "id": 14,
       "links": [],
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -65,27 +62,26 @@
           "fields": "",
           "values": false
         },
-        "text": {},
-        "textMode": "auto"
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
       },
       "pluginVersion": "7.5.0",
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg(irate(ssCpuSystem{instance=\"$Device\",job=\"snmp\"}[1m]) + irate(ssCpuUser{instance=\"$Device\",job=\"snmp\"}[1m]) ) * 100",
-          "format": "heatmap",
+          "expr": "100 - avg(ssCpuIdle{instance=\"$Device\",job=\"snmp\"})",
           "hide": false,
-          "instant": false,
           "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "%",
-          "refId": "D"
+          "legendFormat": "Idle",
+          "refId": "B"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
       "title": "CPU Usage",
-      "type": "stat"
+      "transformations": [],
+      "type": "gauge"
     },
     {
       "datasource": "Prometheus",
@@ -137,13 +133,13 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(snMemPhysTot{instance=\"$Device\",job=\"snmp\"} - snMemPhysCached{instance=\"$Device\",job=\"snmp\"}) / sum(snMemPhysTot{instance=\"$Device\",job=\"snmp\"}) * 100",
-          "format": "table",
+          "expr": "((snMemPhysTot{instance=\"$Device\",job=\"snmp\"} - snMemPhysUsed{instance=\"$Device\",job=\"snmp\"}) / (snMemPhysTot{instance=\"$Device\",job=\"snmp\"})) * 100",
+          "format": "heatmap",
           "hide": false,
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "res",
+          "legendFormat": "%",
           "refId": "D"
         }
       ],
@@ -294,7 +290,7 @@
               },
               {
                 "id": "custom.displayMode",
-                "value": "color-background"
+                "value": "color-text"
               }
             ]
           },
@@ -313,20 +309,40 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Value #B"
+              "options": "Temperature"
             },
             "properties": [
-              {
-                "id": "displayName",
-                "value": "Temperature"
-              },
               {
                 "id": "unit",
                 "value": "celsius"
               },
               {
                 "id": "custom.displayMode",
-                "value": "lcd-gauge"
+                "value": "gradient-gauge"
+              },
+              {
+                "id": "custom.width",
+                "value": 150
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "yellow",
+                      "value": 50
+                    },
+                    {
+                      "color": "red",
+                      "value": 60
+                    }
+                  ]
+                }
               }
             ]
           }
@@ -334,7 +350,7 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 21,
+        "w": 23,
         "x": 0,
         "y": 5
       },
@@ -360,7 +376,7 @@
           "instant": true,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Size",
+          "legendFormat": "size",
           "refId": "A"
         },
         {
@@ -371,13 +387,12 @@
           "instant": true,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Model",
+          "legendFormat": "model",
           "refId": "C"
         },
         {
           "exemplar": true,
           "expr": "snDiskTemperature{instance=\"$Device\",job=\"snmp\",snDiskIndex=~\"$snDiskIndex\"}",
-          "format": "table",
           "hide": false,
           "instant": true,
           "interval": "",
@@ -385,7 +400,7 @@
           "refId": "B"
         }
       ],
-      "title": "Disk Overview",
+      "title": "Disks Overview",
       "transformations": [
         {
           "id": "filterFieldsByName",
@@ -398,7 +413,7 @@
                 "Value #A",
                 "snDiskModel",
                 "Value #C",
-                "Value #B"
+                "Temperature"
               ]
             }
           }
@@ -406,6 +421,23 @@
         {
           "id": "merge",
           "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": false
+            },
+            "indexByName": {
+              "Time": 0,
+              "Value #A": 4,
+              "Value #C": 5,
+              "instance": 2,
+              "snDiskIndex": 1,
+              "snDiskModel": 3
+            },
+            "renameByName": {}
+          }
         }
       ],
       "type": "table"
@@ -426,7 +458,7 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 7,
+        "w": 8,
         "x": 0,
         "y": 10
       },
@@ -562,8 +594,8 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 7,
-        "x": 7,
+        "w": 8,
+        "x": 8,
         "y": 10
       },
       "hiddenSeries": false,
@@ -679,11 +711,11 @@
         "overrides": []
       },
       "fill": 1,
-      "fillGradient": 3,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 7,
-        "x": 14,
+        "x": 16,
         "y": 10
       },
       "hiddenSeries": false,
@@ -713,16 +745,9 @@
       "renderer": "flot",
       "repeat": "Interface",
       "repeatDirection": "h",
-      "scopedVars": {
-        "Interface": {
-          "selected": false,
-          "text": "1",
-          "value": "1"
-        }
-      },
       "seriesOverrides": [
         {
-          "$$hashKey": "object:135",
+          "$$hashKey": "object:56",
           "alias": "Out",
           "transform": "negative-Y"
         }
@@ -733,7 +758,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(ifInOctets{job=\"snmp\",instance=\"$Device\",ifIndex=\"2\"}[5m])",
+          "expr": "irate(ifInOctets{job='snmp',instance='$Device',ifIndex='2'}[5m]) ",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -744,7 +769,7 @@
         },
         {
           "exemplar": true,
-          "expr": "irate(ifOutOctets{job=\"snmp\",instance=\"$Device\",ifIndex=~\"2\"}[5m])",
+          "expr": "irate(ifOutOctets{job='snmp',instance='$Device',ifIndex='2'}[5m]) ",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -758,151 +783,13 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Network Traffic interface",
+      "title": "Traffic Interface",
       "tooltip": {
         "msResolution": false,
         "shared": true,
         "sort": 0,
         "value_type": "individual"
       },
-      "transformations": [],
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:112",
-          "format": "bytes",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:113",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {
-        "Out": "#C15C17"
-      },
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "description": "",
-      "editable": true,
-      "error": false,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 3,
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 8,
-        "y": 17
-      },
-      "hiddenSeries": false,
-      "id": 27,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": true,
-        "max": true,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.0",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatDirection": "h",
-      "repeatIteration": 1617891582384,
-      "repeatPanelId": 1,
-      "scopedVars": {
-        "Interface": {
-          "selected": false,
-          "text": "2",
-          "value": "2"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "$$hashKey": "object:135",
-          "alias": "Out",
-          "transform": "negative-Y"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "irate(ifInOctets{job=\"snmp\",instance=\"$Device\",ifIndex=\"2\"}[5m])",
-          "format": "time_series",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "In",
-          "refId": "A",
-          "step": 60
-        },
-        {
-          "exemplar": true,
-          "expr": "irate(ifOutOctets{job=\"snmp\",instance=\"$Device\",ifIndex=~\"2\"}[5m])",
-          "format": "time_series",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "Out",
-          "refId": "B",
-          "step": 60
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Network Traffic interface",
-      "tooltip": {
-        "msResolution": false,
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transformations": [],
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -940,10 +827,7 @@
   "refresh": "30s",
   "schemaVersion": 27,
   "style": "dark",
-  "tags": [
-    "lacie",
-    "nas"
-  ],
+  "tags": [],
   "templating": {
     "list": [
       {
@@ -1058,5 +942,5 @@
   "timezone": "browser",
   "title": "Seagate Lacie 2BIG NAS SNMP",
   "uid": "N4Cl097iz",
-  "version": 10
+  "version": 1
 }
