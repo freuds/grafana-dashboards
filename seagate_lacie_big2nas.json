@@ -17,7 +17,7 @@
   "gnetId": 6157,
   "graphTooltip": 0,
   "id": 52,
-  "iteration": 1617898931596,
+  "iteration": 1617898931608,
   "links": [],
   "panels": [
     {
@@ -212,6 +212,62 @@
       "timeShift": null,
       "title": "Disk Used",
       "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 12,
+        "y": 0
+      },
+      "id": 28,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "/^Second$/",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.0",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sysUpTime{job=\"snmp\",instance=\"$Device\"} / 100",
+          "interval": "",
+          "legendFormat": "Second",
+          "refId": "A"
+        }
+      ],
+      "title": "Uptime",
+      "type": "stat"
     },
     {
       "datasource": "Prometheus",
