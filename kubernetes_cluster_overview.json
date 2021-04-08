@@ -87,7 +87,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(ceil(increase(nginx_ingress_controller_nginx_process_connections_total{state=\"accepted\"}[5m])))",
+          "expr": "sum(ceil(increase(nginx_ingress_controller_nginx_process_connections_total{state=\"active\"}[5m])))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -346,7 +346,7 @@
           },
           "mappings": [
             {
-              "$$hashKey": "object:272",
+              "$$hashKey": "object:120",
               "id": 0,
               "op": "=",
               "text": "N/A",
@@ -354,7 +354,7 @@
               "value": "null"
             }
           ],
-          "max": 10,
+          "max": 3000,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
@@ -365,15 +365,15 @@
               },
               {
                 "color": "rgba(248, 112, 0, 0.89)",
-                "value": 2
+                "value": 2000
               },
               {
                 "color": "rgba(245, 54, 54, 0.9)",
-                "value": 5
+                "value": 2500
               }
             ]
           },
-          "unit": "s"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -383,7 +383,7 @@
         "x": 10,
         "y": 0
       },
-      "id": 15,
+      "id": 18,
       "interval": null,
       "links": [],
       "maxDataPoints": 100,
@@ -391,7 +391,7 @@
         "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
-            "mean"
+            "lastNotNull"
           ],
           "fields": "",
           "values": false
@@ -414,7 +414,7 @@
           "step": 40
         }
       ],
-      "title": "Request Time",
+      "title": "Accepted Connections",
       "type": "gauge"
     },
     {
@@ -751,7 +751,7 @@
         "current": false,
         "max": false,
         "min": false,
-        "show": true,
+        "show": false,
         "total": false,
         "values": false
       },
@@ -774,30 +774,30 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(node_load5) by (instance) / count(node_cpu_seconds_total{mode=\"system\"}) by (instance)",
+          "expr": "sum(node_load1) by (instance) / count(rate(node_cpu_seconds_total{mode=\"system\"}[5m])) by (instance)",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "load 1 {{instance}}",
           "metric": "node_load1",
           "refId": "A",
           "step": 10
         },
         {
           "exemplar": true,
-          "expr": "sum(node_load5) by (instance) / count(node_cpu_seconds_total{mode=\"system\"}) by (instance)",
+          "expr": "sum(node_load5) by (instance) / count(rate(node_cpu_seconds_total{mode=\"system\"}[5m])) by (instance)",
           "hide": false,
           "interval": "",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "load 10 {{instance}}",
           "refId": "B"
         },
         {
           "exemplar": true,
-          "expr": "sum(node_load15) by (instance) / count(node_cpu_seconds_total{mode=\"system\"}) by (instance)",
+          "expr": "sum(node_load15) by (instance) / count(rate(node_cpu_seconds_total{mode=\"system\"}[5m])) by (instance)",
           "hide": false,
           "interval": "",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "load 15 {{instance}}",
           "refId": "C"
         }
       ],
@@ -811,6 +811,7 @@
         "sort": 0,
         "value_type": "individual"
       },
+      "transformations": [],
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -821,6 +822,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:105",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -829,6 +831,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:106",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1480,5 +1483,5 @@
   "timezone": "",
   "title": "Kubernetes Cluster Overview",
   "uid": "os6Bh8Omk",
-  "version": 1
+  "version": 2
 }
