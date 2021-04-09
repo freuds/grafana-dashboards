@@ -87,7 +87,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(ceil(increase(nginx_ingress_controller_nginx_process_connections_total{state=\"active\"}[5m])))",
+          "expr": "sum(ceil(increase(nginx_ingress_controller_nginx_process_connections{state=\"active\"}[5m])))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -414,7 +414,7 @@
           "step": 40
         }
       ],
-      "title": "Accepted Connections",
+      "title": "Total Connections",
       "type": "gauge"
     },
     {
@@ -1485,5 +1485,5 @@
   "timezone": "",
   "title": "Kubernetes Cluster Overview",
   "uid": "os6Bh8Omk",
-  "version": 2
+  "version": 3
 }
