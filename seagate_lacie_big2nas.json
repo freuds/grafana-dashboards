@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": 6157,
   "graphTooltip": 0,
-  "id": 52,
-  "iteration": 1617898931608,
+  "id": 54,
+  "iteration": 1617973955710,
   "links": [],
   "panels": [
     {
@@ -214,7 +214,7 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -365,7 +365,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Temperature"
+              "options": "Value #B"
             },
             "properties": [
               {
@@ -449,6 +449,7 @@
         {
           "exemplar": true,
           "expr": "snDiskTemperature{instance=\"$Device\",job=\"snmp\",snDiskIndex=~\"$snDiskIndex\"}",
+          "format": "table",
           "hide": false,
           "instant": true,
           "interval": "",
@@ -469,7 +470,7 @@
                 "Value #A",
                 "snDiskModel",
                 "Value #C",
-                "Temperature"
+                "Value #B"
               ]
             }
           }
@@ -998,5 +999,5 @@
   "timezone": "browser",
   "title": "Seagate Lacie 2BIG NAS SNMP",
   "uid": "N4Cl097iz",
-  "version": 1
+  "version": 2
 }
