@@ -17,7 +17,7 @@
   "gnetId": 6157,
   "graphTooltip": 0,
   "id": 54,
-  "iteration": 1617973955710,
+  "iteration": 1619364842922,
   "links": [],
   "panels": [
     {
@@ -70,7 +70,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "100 - avg(ssCpuIdle{instance=\"$Device\",job=\"snmp\"})",
+          "expr": "100 - avg(ssCpuIdle{instance=\"$Device\",job=\"snmp-exporter\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "Idle",
@@ -133,7 +133,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "((snMemPhysTot{instance=\"$Device\",job=\"snmp\"} - snMemPhysUsed{instance=\"$Device\",job=\"snmp\"}) / (snMemPhysTot{instance=\"$Device\",job=\"snmp\"})) * 100",
+          "expr": "((snMemPhysTot{instance=\"$Device\",job=\"snmp-exporter\"} - snMemPhysUsed{instance=\"$Device\",job=\"snmp-exporter\"}) / (snMemPhysTot{instance=\"$Device\",job=\"snmp-exporter\"})) * 100",
           "format": "heatmap",
           "hide": false,
           "instant": false,
@@ -198,7 +198,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "snVolPercentUsed{instance=\"$Device\",job=\"snmp\",snVolIndex=\"3\"}",
+          "expr": "snVolPercentUsed{instance=\"$Device\",job=\"snmp-exporter\",snVolIndex=\"3\"}",
           "format": "heatmap",
           "hide": false,
           "instant": false,
@@ -260,7 +260,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sysUpTime{job=\"snmp\",instance=\"$Device\"} / 100",
+          "expr": "sysUpTime{job=\"snmp-exporter\",instance=\"$Device\"} / 100",
           "interval": "",
           "legendFormat": "Second",
           "refId": "A"
@@ -426,7 +426,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "snDiskSize{instance=\"$Device\",job=\"snmp\",snDiskIndex=~\"$snDiskIndex\"}",
+          "expr": "snDiskSize{instance=\"$Device\",job=\"snmp-exporter\",snDiskIndex=~\"$snDiskIndex\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -437,7 +437,7 @@
         },
         {
           "exemplar": true,
-          "expr": "snDiskModel{instance=\"$Device\",job=\"snmp\",snDiskIndex=~\"$snDiskIndex\"}",
+          "expr": "snDiskModel{instance=\"$Device\",job=\"snmp-exporter\",snDiskIndex=~\"$snDiskIndex\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -448,7 +448,7 @@
         },
         {
           "exemplar": true,
-          "expr": "snDiskTemperature{instance=\"$Device\",job=\"snmp\",snDiskIndex=~\"$snDiskIndex\"}",
+          "expr": "snDiskTemperature{instance=\"$Device\",job=\"snmp-exporter\",snDiskIndex=~\"$snDiskIndex\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -549,7 +549,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "snMemPhysFree{instance=\"$Device\",job=\"snmp\"} * 1024",
+          "expr": "snMemPhysFree{instance=\"$Device\",job=\"snmp-exporter\"} * 1024",
           "format": "heatmap",
           "hide": false,
           "instant": false,
@@ -560,7 +560,7 @@
         },
         {
           "exemplar": true,
-          "expr": "snMemPhysCached{instance=\"$Device\",job=\"snmp\"} * 1024",
+          "expr": "snMemPhysCached{instance=\"$Device\",job=\"snmp-exporter\"} * 1024",
           "format": "heatmap",
           "hide": false,
           "instant": false,
@@ -571,7 +571,7 @@
         },
         {
           "exemplar": true,
-          "expr": "snMemPhysUsed{instance=\"$Device\",job=\"snmp\"} * 1024",
+          "expr": "snMemPhysUsed{instance=\"$Device\",job=\"snmp-exporter\"} * 1024",
           "format": "heatmap",
           "hide": false,
           "instant": false,
@@ -582,7 +582,7 @@
         },
         {
           "exemplar": true,
-          "expr": "snMemPhysTot{instance=\"$Device\",job=\"snmp\"} * 1024",
+          "expr": "snMemPhysTot{instance=\"$Device\",job=\"snmp-exporter\"} * 1024",
           "format": "heatmap",
           "hide": false,
           "instant": false,
@@ -685,7 +685,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg(laLoadInt{laIndex=\"1\",instance=\"$Device\",job=\"snmp\"}) / 100",
+          "expr": "avg(laLoadInt{laIndex=\"1\",instance=\"$Device\",job=\"snmp-exporter\"}) / 100",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -694,7 +694,7 @@
         },
         {
           "exemplar": true,
-          "expr": "avg(laLoadInt{laIndex=\"2\",instance=\"$Device\",job=\"snmp\"}) / 100",
+          "expr": "avg(laLoadInt{laIndex=\"2\",instance=\"$Device\",job=\"snmp-exporter\"}) / 100",
           "hide": false,
           "interval": "",
           "legendFormat": "last 5 min",
@@ -702,7 +702,7 @@
         },
         {
           "exemplar": true,
-          "expr": "avg(laLoadInt{laIndex=\"3\",instance=\"$Device\",job=\"snmp\"}) / 100",
+          "expr": "avg(laLoadInt{laIndex=\"3\",instance=\"$Device\",job=\"snmp-exporter\"}) / 100",
           "hide": false,
           "interval": "",
           "legendFormat": "last 15 min",
@@ -815,7 +815,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(ifInOctets{job='snmp',instance='$Device',ifIndex='2'}[5m]) ",
+          "expr": "irate(ifInOctets{job='snmp-exporter',instance='$Device',ifIndex='2'}[5m]) ",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -826,7 +826,7 @@
         },
         {
           "exemplar": true,
-          "expr": "irate(ifOutOctets{job='snmp',instance='$Device',ifIndex='2'}[5m]) ",
+          "expr": "irate(ifOutOctets{job='snmp-exporter',instance='$Device',ifIndex='2'}[5m]) ",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -890,9 +890,10 @@
       {
         "allValue": null,
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "192.168.20.20",
-          "value": "192.168.20.20"
+          "text": "None",
+          "value": ""
         },
         "datasource": "Prometheus",
         "definition": "",
@@ -921,14 +922,18 @@
       {
         "allValue": ".*",
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
         "datasource": "Prometheus",
-        "definition": "query_result(snDiskSlot{job=\"snmp\",instance=\"$Device\"})",
+        "definition": "query_result(snDiskSlot{job=\"snmp-exporter\",instance=\"$Device\"})",
         "description": null,
-        "error": null,
+        "error": {
+          "message": "Unknown error during query transaction. Please check JS console logs.",
+          "status": 502,
+          "statusText": ""
+        },
         "hide": 1,
         "includeAll": true,
         "label": "",
@@ -939,20 +944,10 @@
             "selected": true,
             "text": "All",
             "value": "$__all"
-          },
-          {
-            "selected": false,
-            "text": "1",
-            "value": "1"
-          },
-          {
-            "selected": false,
-            "text": "2",
-            "value": "2"
           }
         ],
         "query": {
-          "query": "query_result(snDiskSlot{job=\"snmp\",instance=\"$Device\"})",
+          "query": "query_result(snDiskSlot{job=\"snmp-exporter\",instance=\"$Device\"})",
           "refId": "StandardVariableQuery"
         },
         "refresh": 0,
