@@ -16,7 +16,8 @@
   "editable": true,
   "gnetId": 10562,
   "graphTooltip": 0,
-  "id": 53,
+  "id": 56,
+  "iteration": 1619537700029,
   "links": [
     {
       "icon": "external link",
@@ -65,7 +66,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -214,7 +215,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.5.0",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "exemplar": true,
@@ -249,10 +250,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           }
@@ -270,7 +267,11 @@
               },
               {
                 "id": "custom.align",
-                "value": null
+                "value": "left"
+              },
+              {
+                "id": "custom.width",
+                "value": 170
               }
             ]
           },
@@ -295,30 +296,10 @@
               {
                 "id": "custom.align",
                 "value": null
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "connection_time"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Login Time"
               },
               {
-                "id": "unit",
-                "value": "dateTimeFromNow"
-              },
-              {
-                "id": "unit",
-                "value": "time: YYYY-MM-DD HH:mm:ss"
-              },
-              {
-                "id": "custom.align",
-                "value": null
+                "id": "custom.width",
+                "value": 120
               }
             ]
           },
@@ -330,7 +311,7 @@
             "properties": [
               {
                 "id": "displayName",
-                "value": "Address"
+                "value": "Internal IP"
               },
               {
                 "id": "unit",
@@ -349,20 +330,16 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Value"
+              "options": "real_address"
             },
             "properties": [
               {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "decimals",
-                "value": 2
-              },
-              {
                 "id": "custom.align",
                 "value": null
+              },
+              {
+                "id": "displayName",
+                "value": "External IP"
               }
             ]
           },
@@ -405,6 +382,22 @@
                 "value": null
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "connection_time"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Time connection"
+              },
+              {
+                "id": "unit",
+                "value": "dateTimeFromNow"
+              }
+            ]
           }
         ]
       },
@@ -419,12 +412,13 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.5.0",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sort_desc(sum(label_replace(openvpn_server_client_received_bytes_total{job=\"openvpn-exporter\",common_name!=\"UNDEF\"}, \"connection_time\", \"${1}000\", \"connection_time\", \"(.*)\"))by(common_name, connection_time, virtual_address))",
+          "expr": "sort_desc(sum(label_replace(openvpn_server_client_received_bytes_total{job=\"openvpn-exporter\",common_name!=\"UNDEF\"}, \"connection_time\", \"${1}000\", \"connection_time\", \"(.*)\")) by (common_name, connection_time, virtual_address, real_address))",
           "format": "table",
+          "hide": true,
           "instant": true,
           "interval": "",
           "intervalFactor": 1,
@@ -433,13 +427,25 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(label_replace(openvpn_server_client_sent_bytes_total{job=\"openvpn-exporter\",common_name!=\"UNDEF\"}, \"connection_time\", \"${1}000\", \"connection_time\", \"(.*)\"))by(common_name, connection_time, virtual_address)",
+          "expr": "sum(label_replace(openvpn_server_client_sent_bytes_total{job=\"openvpn-exporter\",common_name!=\"UNDEF\"}, \"connection_time\", \"${1}000\", \"connection_time\", \"(.*)\"))by(common_name, connection_time, virtual_address, real_adress)",
           "format": "table",
+          "hide": true,
           "instant": true,
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "",
           "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(label_replace(openvpn_server_client_received_bytes_total{job=\"openvpn-exporter\",common_name!=\"UNDEF\"}, \"connection_time\", \"time() - ${1}000\", \"connection_time2\", \"(.*)\")) by (common_name, connection_time, virtual_address, real_address)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "C"
         }
       ],
       "timeFrom": null,
@@ -477,7 +483,7 @@
               "$$hashKey": "object:584",
               "id": 1,
               "op": "=",
-              "text": "No Client(s)",
+              "text": "None",
               "type": 1,
               "value": "0"
             }
@@ -504,7 +510,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 4,
         "w": 3,
         "x": 6,
         "y": 2
@@ -530,7 +536,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.0",
+      "pluginVersion": "7.5.4",
       "repeat": null,
       "targets": [
         {
@@ -629,7 +635,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.0",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "exemplar": true,
@@ -645,79 +651,6 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Status Update Since",
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#FF9830",
-                "value": null
-              },
-              {
-                "color": "#5794F2",
-                "value": 1
-              },
-              {
-                "color": "#5794F2",
-                "value": 2
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 6,
-        "y": 5
-      },
-      "id": 16,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.5.0",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "count(openvpn_server_client_received_bytes_total{job=\"openvpn-exporter\",common_name=~\"[a-zA-Z0-9]*\"}) or absent(count(openvpn_server_client_received_bytes_total{job=\"openvpn-exporter\",common_name=~\"[a-zA-Z0-9]*\"}))-1",
-          "format": "time_series",
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Users",
       "type": "stat"
     },
     {
@@ -813,6 +746,79 @@
       "valueName": "current"
     },
     {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#FF9830",
+                "value": null
+              },
+              {
+                "color": "#5794F2",
+                "value": 1
+              },
+              {
+                "color": "#5794F2",
+                "value": 2
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 6,
+        "y": 6
+      },
+      "id": 16,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.4",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "count(openvpn_server_client_received_bytes_total{job=\"openvpn-exporter\",common_name=~\"[a-zA-Z0-9]*\"}) or absent(count(openvpn_server_client_received_bytes_total{job=\"openvpn-exporter\",common_name=~\"[a-zA-Z0-9]*\"}))-1",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Users",
+      "type": "stat"
+    },
+    {
       "aliasColors": {},
       "bars": true,
       "dashLength": 10,
@@ -849,7 +855,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1051,7 +1057,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1262,7 +1268,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1278,7 +1284,7 @@
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Connected OpenVPN Clients",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -1302,6 +1308,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:70",
           "decimals": 0,
           "format": "short",
           "label": "Clients",
@@ -1311,6 +1318,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:71",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1332,11 +1340,23 @@
     "openvpn"
   ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "datasource": "Prometheus",
+        "description": null,
+        "error": null,
+        "filters": [],
+        "hide": 0,
+        "label": null,
+        "name": "Filters",
+        "skipUrlSync": false,
+        "type": "adhoc"
+      }
+    ]
   },
   "time": {
-    "from": "2021-04-24T03:32:40.250Z",
-    "to": "2021-04-26T03:32:40.252Z"
+    "from": "now-5m",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
