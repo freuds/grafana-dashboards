@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": 6157,
   "graphTooltip": 0,
-  "id": 54,
-  "iteration": 1619364842922,
+  "id": 55,
+  "iteration": 1619521144764,
   "links": [],
   "panels": [
     {
@@ -66,7 +66,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.0",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "exemplar": true,
@@ -129,7 +129,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.0",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "exemplar": true,
@@ -194,7 +194,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.0",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "exemplar": true,
@@ -256,7 +256,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.0",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "exemplar": true,
@@ -422,7 +422,7 @@
         "frameIndex": 2,
         "showHeader": true
       },
-      "pluginVersion": "7.5.0",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "exemplar": true,
@@ -538,7 +538,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -674,7 +674,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -796,7 +796,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -890,13 +890,12 @@
       {
         "allValue": null,
         "current": {
-          "isNone": true,
           "selected": false,
-          "text": "None",
-          "value": ""
+          "text": "192.168.20.20",
+          "value": "192.168.20.20"
         },
         "datasource": "Prometheus",
-        "definition": "",
+        "definition": "query_result(sum by (instance)(ifInOctets{job=\"snmp-exporter\"}))",
         "description": null,
         "error": null,
         "hide": 0,
@@ -906,8 +905,8 @@
         "name": "Device",
         "options": [],
         "query": {
-          "query": "query_result(sum by (instance)(ifInOctets{job=\"snmp\"}))",
-          "refId": "Prometheus-Device-Variable-Query"
+          "query": "query_result(sum by (instance)(ifInOctets{job=\"snmp-exporter\"}))",
+          "refId": "StandardVariableQuery"
         },
         "refresh": 1,
         "regex": ".*instance=\"(.*?)\".*",
@@ -929,28 +928,18 @@
         "datasource": "Prometheus",
         "definition": "query_result(snDiskSlot{job=\"snmp-exporter\",instance=\"$Device\"})",
         "description": null,
-        "error": {
-          "message": "Unknown error during query transaction. Please check JS console logs.",
-          "status": 502,
-          "statusText": ""
-        },
+        "error": null,
         "hide": 1,
         "includeAll": true,
         "label": "",
         "multi": false,
         "name": "snDiskIndex",
-        "options": [
-          {
-            "selected": true,
-            "text": "All",
-            "value": "$__all"
-          }
-        ],
+        "options": [],
         "query": {
           "query": "query_result(snDiskSlot{job=\"snmp-exporter\",instance=\"$Device\"})",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 0,
+        "refresh": 1,
         "regex": ".*snDiskIndex=\"(.*?)\",.*",
         "skipUrlSync": false,
         "sort": 3,
@@ -994,5 +983,5 @@
   "timezone": "browser",
   "title": "Seagate Lacie 2BIG NAS SNMP",
   "uid": "N4Cl097iz",
-  "version": 2
+  "version": 1
 }
