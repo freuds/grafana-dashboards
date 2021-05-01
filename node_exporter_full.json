@@ -13692,7 +13692,8 @@
     "schemaVersion": 27,
     "style": "dark",
     "tags": [
-      "linux"
+      "linux",
+      "node_exporter"
     ],
     "templating": {
       "list": [
