@@ -884,7 +884,10 @@
   "refresh": "30s",
   "schemaVersion": 27,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "nas",
+    "seagate"
+  ],
   "templating": {
     "list": [
       {
@@ -983,5 +986,5 @@
   "timezone": "browser",
   "title": "Seagate Lacie 2BIG NAS SNMP",
   "uid": "N4Cl097iz",
-  "version": 1
+  "version": 2
 }
