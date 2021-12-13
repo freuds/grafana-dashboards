@@ -8,16 +8,23 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "description": "OpenVPN Server status using Prometheus and OpenVPN exporter ",
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": 10562,
   "graphTooltip": 0,
-  "id": 58,
-  "iteration": 1619605503182,
+  "id": 59,
+  "iteration": 1639398593432,
   "links": [
     {
       "icon": "external link",
@@ -28,16 +35,16 @@
       "type": "dashboards"
     }
   ],
+  "liveNow": false,
   "panels": [
     {
       "aliasColors": {},
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -66,7 +73,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -92,7 +99,6 @@
       "thresholds": [],
       "timeFrom": "24h",
       "timeRegions": [],
-      "timeShift": null,
       "title": "Top Logins",
       "tooltip": {
         "shared": true,
@@ -101,9 +107,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "series",
-        "name": null,
         "show": true,
         "values": [
           "current"
@@ -115,28 +119,24 @@
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "decimals": 0,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -145,28 +145,24 @@
           "displayName": "Status",
           "mappings": [
             {
-              "$$hashKey": "object:350",
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "0": {
+                  "text": "DOWN"
+                },
+                "1": {
+                  "text": "UP"
+                }
+              },
+              "type": "value"
             },
             {
-              "$$hashKey": "object:351",
-              "id": 1,
-              "op": "=",
-              "text": "UP",
-              "type": 1,
-              "value": "1"
-            },
-            {
-              "$$hashKey": "object:352",
-              "id": 2,
-              "op": "=",
-              "text": "DOWN",
-              "type": 1,
-              "value": "0"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
@@ -197,7 +193,6 @@
         "y": 0
       },
       "id": 12,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -215,7 +210,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.3.1",
       "targets": [
         {
           "exemplar": true,
@@ -228,8 +223,6 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "type": "stat"
     },
     {
@@ -237,12 +230,11 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
-      "decimals": 2,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
+      "decimals": 2,
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -277,7 +269,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -356,9 +348,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Top 6 Client Network Activity",
       "tooltip": {
         "shared": true,
@@ -367,48 +357,36 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "decbytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
-          "decimals": null,
           "format": "bytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
-      "decimals": 0,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
+      "decimals": 0,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -436,7 +414,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -457,9 +435,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Clients Connected",
       "tooltip": {
         "shared": true,
@@ -468,9 +444,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -481,28 +455,25 @@
           "format": "short",
           "label": "Clients",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:71",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -512,12 +483,13 @@
           "decimals": 0,
           "mappings": [
             {
-              "$$hashKey": "object:628",
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
@@ -561,7 +533,6 @@
         "y": 2
       },
       "id": 10,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -579,7 +550,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.3.1",
       "targets": [
         {
           "exemplar": true,
@@ -592,14 +563,14 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Status Update Since",
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -608,20 +579,21 @@
           },
           "mappings": [
             {
-              "$$hashKey": "object:583",
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "0": {
+                  "text": "None"
+                }
+              },
+              "type": "value"
             },
             {
-              "$$hashKey": "object:584",
-              "id": 1,
-              "op": "=",
-              "text": "None",
-              "type": 1,
-              "value": "0"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
@@ -652,7 +624,6 @@
         "y": 5
       },
       "id": 2,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -672,8 +643,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.4",
-      "repeat": null,
+      "pluginVersion": "8.3.1",
       "targets": [
         {
           "exemplar": false,
@@ -686,8 +656,6 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Connected Clients",
       "transformations": [],
       "type": "stat"
@@ -697,10 +665,9 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -729,7 +696,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -756,7 +723,6 @@
       "thresholds": [],
       "timeFrom": "24h",
       "timeRegions": [],
-      "timeShift": null,
       "title": "Top Traffic",
       "tooltip": {
         "shared": true,
@@ -765,9 +731,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "series",
-        "name": null,
         "show": true,
         "values": [
           "current"
@@ -779,34 +743,31 @@
           "format": "decbytes",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "decimals": 0,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
           "custom": {
-            "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "mappings": [],
@@ -860,8 +821,7 @@
                 "value": 2
               },
               {
-                "id": "custom.align",
-                "value": null
+                "id": "custom.align"
               },
               {
                 "id": "custom.width",
@@ -888,8 +848,7 @@
                 "value": 2
               },
               {
-                "id": "custom.align",
-                "value": null
+                "id": "custom.align"
               }
             ]
           },
@@ -900,8 +859,7 @@
             },
             "properties": [
               {
-                "id": "custom.align",
-                "value": null
+                "id": "custom.align"
               },
               {
                 "id": "displayName",
@@ -924,8 +882,7 @@
                 "value": "bytes"
               },
               {
-                "id": "custom.align",
-                "value": null
+                "id": "custom.align"
               }
             ]
           },
@@ -944,8 +901,7 @@
                 "value": "bytes"
               },
               {
-                "id": "custom.align",
-                "value": null
+                "id": "custom.align"
               }
             ]
           },
@@ -992,9 +948,16 @@
       "id": 4,
       "links": [],
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
         "showHeader": true
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.3.1",
       "targets": [
         {
           "exemplar": true,
@@ -1019,8 +982,6 @@
           "refId": "B"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Current OpenVPN Clients",
       "transformations": [
         {
@@ -1071,8 +1032,10 @@
       "type": "table"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1107,7 +1070,6 @@
         "y": 9
       },
       "id": 16,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -1125,7 +1087,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.4",
+      "pluginVersion": "8.3.1",
       "targets": [
         {
           "exemplar": true,
@@ -1138,33 +1100,48 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Users",
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": true,
-      "colors": [
-        "#5794F2",
-        "#5794F2",
-        "#5794F2"
-      ],
-      "datasource": "Prometheus",
-      "decimals": 2,
+      "description": "",
       "fieldConfig": {
-        "defaults": {},
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#5794F2",
+                "value": null
+              },
+              {
+                "color": "#5794F2",
+                "value": 1
+              },
+              {
+                "color": "#5794F2",
+                "value": 2
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
         "overrides": []
-      },
-      "format": "bytes",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 4,
@@ -1174,75 +1151,53 @@
       },
       "hideTimeOverride": true,
       "id": 18,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": " received today",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "8.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
           "expr": "sum(increase(openvpn_server_client_received_bytes_total[1d]))",
           "format": "time_series",
           "instant": true,
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
-      "thresholds": "1, 2",
       "timeFrom": "24h",
-      "timeShift": null,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "title": "Total Received (Bytes)",
+      "type": "stat"
     },
     {
       "aliasColors": {},
       "breakPoint": "100%",
-      "cacheTimeout": null,
       "combine": {
         "label": "Others",
         "threshold": "0.025"
       },
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fontSize": "60%",
       "format": "decbytes",
@@ -1253,7 +1208,6 @@
         "y": 14
       },
       "id": 8,
-      "interval": null,
       "legend": {
         "percentage": true,
         "show": true,
@@ -1278,34 +1232,48 @@
         }
       ],
       "timeFrom": "24h",
-      "timeShift": null,
       "title": "Traffic Distribution",
       "type": "grafana-piechart-panel",
       "valueName": "current"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPrefix": false,
-      "colorValue": true,
-      "colors": [
-        "#5794F2",
-        "#5794F2",
-        "#5794F2"
-      ],
-      "datasource": "Prometheus",
-      "decimals": 2,
       "fieldConfig": {
-        "defaults": {},
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 2,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#5794F2",
+                "value": null
+              },
+              {
+                "color": "#5794F2",
+                "value": 1
+              },
+              {
+                "color": "#5794F2",
+                "value": 2
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
         "overrides": []
-      },
-      "format": "bytes",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
       },
       "gridPos": {
         "h": 4,
@@ -1315,69 +1283,46 @@
       },
       "hideTimeOverride": true,
       "id": 19,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "$$hashKey": "object:912",
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "$$hashKey": "object:913",
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": " sent today",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "8.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
           "expr": "sum(increase(openvpn_server_client_sent_bytes_total[1d]))",
           "format": "time_series",
           "instant": true,
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
-      "thresholds": "1, 2",
       "timeFrom": "24h",
-      "timeShift": null,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "$$hashKey": "object:915",
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "title": "Total Sent (Bytes)",
+      "type": "stat"
     }
   ],
   "refresh": false,
-  "schemaVersion": 27,
+  "schemaVersion": 33,
   "style": "dark",
   "tags": [
     "openvpn"
@@ -1385,27 +1330,27 @@
   "templating": {
     "list": [
       {
-        "datasource": "Prometheus",
-        "description": null,
-        "error": null,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "filters": [],
         "hide": 0,
-        "label": null,
         "name": "Filters",
         "skipUrlSync": false,
         "type": "adhoc"
       },
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "prometheus-openvpn-exporter.prometheus.svc.cluster.local:9176",
           "value": "prometheus-openvpn-exporter.prometheus.svc.cluster.local:9176"
         },
-        "datasource": "Prometheus",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "definition": "label_values(openvpn_up{job=\"openvpn-exporter\"}, instance)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Host",
@@ -1421,7 +1366,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -1460,5 +1404,6 @@
   "timezone": "",
   "title": "OpenVPN Server",
   "uid": "_1DM17HWk",
-  "version": 3
+  "version": 1,
+  "weekStart": ""
 }
