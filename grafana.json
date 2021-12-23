@@ -51,10 +51,6 @@
   "liveNow": false,
   "panels": [
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -115,13 +111,20 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": false,
           "expr": "up{job=\"grafana\"}",
           "format": "time_series",
           "instant": true,
+          "interval": "",
           "intervalFactor": 2,
+          "legendFormat": "",
           "refId": "A",
           "step": 60
         }
@@ -130,10 +133,6 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -190,13 +189,20 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": false,
           "expr": "grafana_stat_totals_dashboard",
           "format": "time_series",
           "instant": true,
+          "interval": "",
           "intervalFactor": 2,
+          "legendFormat": "",
           "refId": "A",
           "step": 60
         }
@@ -205,10 +211,6 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -265,13 +267,20 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": false,
           "expr": "grafana_stat_total_users",
           "format": "time_series",
           "instant": true,
+          "interval": "",
           "intervalFactor": 2,
+          "legendFormat": "",
           "refId": "A",
           "step": 60
         }
@@ -280,10 +289,6 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -340,13 +345,20 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": false,
           "expr": "grafana_stat_total_playlists",
           "format": "time_series",
           "instant": true,
+          "interval": "",
           "intervalFactor": 2,
+          "legendFormat": "",
           "refId": "A",
           "step": 60
         }
@@ -356,10 +368,6 @@
     },
     {
       "columns": [],
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
       "fontSize": "100%",
       "gridPos": {
         "h": 5,
@@ -401,9 +409,15 @@
       ],
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": false,
           "expr": "topk(1, grafana_info or grafana_build_info)",
           "format": "time_series",
           "instant": true,
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{version}}",
           "refId": "A",
@@ -422,10 +436,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -460,7 +471,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -472,8 +483,14 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": true,
           "expr": "sum by (statuscode) (irate(http_request_total{job='grafana'}[5m]))",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 3,
           "legendFormat": "{{statuscode}}",
           "refId": "B",
@@ -519,10 +536,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -557,7 +571,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -569,14 +583,24 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": true,
           "expr": "sum(irate(grafana_api_response_status_total[5m]))",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 4,
           "legendFormat": "api",
           "refId": "A",
           "step": 20
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "sum(irate(grafana_proxy_response_status_total[5m]))",
           "format": "time_series",
           "intervalFactor": 4,
@@ -585,6 +609,10 @@
           "step": 20
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "sum(irate(grafana_page_response_status_total[5m]))",
           "format": "time_series",
           "intervalFactor": 4,
@@ -625,10 +653,6 @@
     },
     {
       "columns": [],
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
       "fontSize": "100%",
       "gridPos": {
         "h": 10,
@@ -671,9 +695,15 @@
       ],
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": false,
           "expr": "sort(topk(8, sum by (handler) (http_request_total{job=\"grafana\"})))",
           "format": "time_series",
           "instant": true,
+          "interval": "",
           "intervalFactor": 10,
           "legendFormat": "{{handler}}",
           "refId": "A",
@@ -692,10 +722,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -729,7 +756,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -739,8 +766,14 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": true,
           "expr": "increase(grafana_alerting_active_alerts[1m])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 3,
           "legendFormat": "{{state}}",
           "refId": "A",
@@ -787,10 +820,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -824,7 +854,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -839,8 +869,14 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": true,
           "expr": " sum (ALERTS)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 3,
           "legendFormat": "firing alerts",
           "refId": "A",
@@ -882,10 +918,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "description": "Aggregated over all Grafana nodes.",
       "fieldConfig": {
         "defaults": {
@@ -920,7 +953,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -951,9 +984,15 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": true,
           "expr": "sum(go_goroutines{job=\"grafana\"})",
           "format": "time_series",
           "hide": false,
+          "interval": "",
           "intervalFactor": 4,
           "legendFormat": "go routines",
           "refId": "A",
@@ -962,6 +1001,10 @@
           "type": "timeserie"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "sum(process_resident_memory_bytes{job=\"grafana\"})",
           "format": "time_series",
           "intervalFactor": 4,
@@ -1002,7 +1045,7 @@
     }
   ],
   "revision": "1.0",
-  "schemaVersion": 33,
+  "schemaVersion": 34,
   "style": "dark",
   "tags": [
     "grafana",

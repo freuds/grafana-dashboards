@@ -21,8 +21,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 66,
-  "iteration": 1639403172884,
+  "iteration": 1640253346971,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -136,7 +135,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -268,7 +267,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -608,7 +607,7 @@
       },
       "paceLength": 10,
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -701,7 +700,7 @@
       },
       "paceLength": 10,
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -814,7 +813,7 @@
       },
       "paceLength": 10,
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -907,7 +906,7 @@
       },
       "paceLength": 10,
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1020,7 +1019,7 @@
       },
       "paceLength": 10,
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1113,7 +1112,7 @@
       },
       "paceLength": 10,
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1166,7 +1165,7 @@
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 33,
+  "schemaVersion": 34,
   "style": "dark",
   "tags": [
     "kubernetes-mixin"
@@ -1197,10 +1196,6 @@
           "text": "None",
           "value": ""
         },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PBFA97CFB590B2093"
-        },
         "definition": "",
         "hide": 2,
         "includeAll": false,
@@ -1230,10 +1225,6 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PBFA97CFB590B2093"
-        },
         "definition": "label_values(container_network_receive_packets_total{cluster=\"$cluster\"}, namespace)",
         "hide": 0,
         "includeAll": true,
@@ -1262,7 +1253,7 @@
           "text": "5m",
           "value": "5m"
         },
-        "datasource": "Prometheus",
+        "datasource": "prometheus",
         "hide": 0,
         "includeAll": false,
         "multi": false,
@@ -1303,7 +1294,7 @@
           "text": "4h",
           "value": "4h"
         },
-        "datasource": "Prometheus",
+        "datasource": "prometheus",
         "hide": 2,
         "includeAll": false,
         "multi": false,

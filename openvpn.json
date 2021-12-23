@@ -23,8 +23,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 10562,
   "graphTooltip": 0,
-  "id": 59,
-  "iteration": 1639398593432,
+  "iteration": 1640192498556,
   "links": [
     {
       "icon": "external link",
@@ -42,10 +41,6 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -73,7 +68,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -88,9 +83,15 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": false,
           "expr": "topk(6, sum(count_values(\"connection_time\", count_over_time(openvpn_server_client_received_bytes_total{common_name!=\"UNDEF\"}[1d]))by(common_name))by(common_name)>1)",
           "format": "time_series",
           "instant": true,
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{ common_name }}",
           "refId": "A"
@@ -133,10 +134,7 @@
       }
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -210,9 +208,13 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "exemplar": true,
           "expr": "openvpn_up{job=\"openvpn-exporter\"}",
           "format": "time_series",
@@ -230,10 +232,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "decimals": 2,
       "fill": 0,
       "fillGradient": 0,
@@ -269,7 +268,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -308,6 +307,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "exemplar": false,
           "expr": "topk(6, sum(rate(openvpn_server_client_received_bytes_total{job=\"openvpn-exporter\",common_name!=\"UNDEF\"}[2m])) by (common_name))",
           "format": "time_series",
@@ -318,6 +321,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "exemplar": true,
           "expr": "topk(6, sum(rate(openvpn_server_client_sent_bytes_total{job=\"openvpn-exporter\",common_name!=\"UNDEF\"}[2m])) by (common_name))",
           "format": "time_series",
@@ -328,6 +335,10 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "exemplar": true,
           "expr": "sum(bottomk(scalar(openvpn_server_connected_clients{job=\"openvpn-exporter\"})-6, sum(rate(openvpn_server_client_received_bytes_total{job=\"openvpn-exporter\",common_name!=\"UNDEF\"}[2m]))by(common_name)))",
           "format": "time_series",
@@ -338,6 +349,10 @@
           "refId": "E"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "expr": "sum(bottomk(scalar(openvpn_openvpn_server_connected_clients)-6, sum(rate(openvpn_server_client_sent_bytes_total{common_name!=\"UNDEF\"}[1m]))by(common_name)))",
           "format": "time_series",
           "hide": true,
@@ -382,10 +397,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "decimals": 0,
       "fill": 1,
       "fillGradient": 0,
@@ -414,7 +426,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -424,6 +436,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "exemplar": true,
           "expr": "sum(openvpn_server_connected_clients{job=\"openvpn-exporter\"})",
           "format": "time_series",
@@ -470,10 +486,7 @@
       }
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -550,9 +563,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "exemplar": true,
           "expr": "time()-openvpn_status_update_time_seconds{job=\"openvpn-exporter\"}",
           "format": "time_series",
@@ -567,10 +584,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -643,9 +657,13 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "exemplar": false,
           "expr": "openvpn_server_connected_clients{job=\"openvpn-exporter\"}",
           "format": "time_series",
@@ -665,10 +683,6 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -696,7 +710,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -711,6 +725,11 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": false,
           "expr": "topk(6, sum(increase(openvpn_server_client_received_bytes_total{common_name!=\"UNDEF\"}[1d])+increase(openvpn_server_client_sent_bytes_total{common_name!=\"UNDEF\"}[1d]))by(common_name))",
           "format": "time_series",
           "instant": true,
@@ -757,16 +776,13 @@
       }
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
           "custom": {
+            "align": "auto",
             "displayMode": "auto",
             "filterable": false
           },
@@ -957,10 +973,14 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
-          "exemplar": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": false,
           "expr": "sort_desc(sum(rate(openvpn_server_client_received_bytes_total{job=\"openvpn-exporter\",common_name!=\"UNDEF\"}[5m])) by (common_name, connection_time, virtual_address, real_address))",
           "format": "table",
           "hide": false,
@@ -971,7 +991,11 @@
           "refId": "A"
         },
         {
-          "exemplar": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": false,
           "expr": "sum(rate(openvpn_server_client_sent_bytes_total{job=\"openvpn-exporter\",common_name!=\"UNDEF\"}[5m])) by (common_name, connection_time, virtual_address, real_address)",
           "format": "table",
           "hide": false,
@@ -1032,10 +1056,7 @@
       "type": "table"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1087,9 +1108,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "exemplar": true,
           "expr": "count(openvpn_server_client_received_bytes_total{job=\"openvpn-exporter\",common_name=~\"[a-zA-Z0-9]*\"}) or absent(count(openvpn_server_client_received_bytes_total{job=\"openvpn-exporter\",common_name=~\"[a-zA-Z0-9]*\"}))-1",
           "format": "time_series",
@@ -1167,7 +1192,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
@@ -1195,10 +1220,7 @@
         "label": "Others",
         "threshold": "0.025"
       },
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "fontSize": "60%",
       "format": "decbytes",
       "gridPos": {
@@ -1223,9 +1245,15 @@
       "strokeWidth": 1,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": true,
           "expr": "sort(sum(increase(openvpn_server_client_received_bytes_total{common_name!=\"UNDEF\"}[1d])+increase(openvpn_server_client_sent_bytes_total{common_name!=\"UNDEF\"}[1d]))by(common_name))",
           "format": "time_series",
           "instant": false,
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{ common_name }}",
           "refId": "A"
@@ -1299,7 +1327,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
@@ -1322,7 +1350,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 33,
+  "schemaVersion": 34,
   "style": "dark",
   "tags": [
     "openvpn"
@@ -1351,6 +1379,9 @@
           "uid": "PBFA97CFB590B2093"
         },
         "definition": "label_values(openvpn_up{job=\"openvpn-exporter\"}, instance)",
+        "error": {
+          "message": "Datasource PBFA97CFB590B2093 was not found"
+        },
         "hide": 0,
         "includeAll": false,
         "label": "Host",
