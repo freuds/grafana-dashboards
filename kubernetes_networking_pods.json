@@ -21,7 +21,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "iteration": 1640253346971,
+  "iteration": 1644175919103,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -53,10 +53,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "decimals": 0,
       "fieldConfig": {
         "defaults": {
@@ -157,8 +154,14 @@
       "tableColumn": "",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": true,
           "expr": "sum(irate(container_network_receive_bytes_total{cluster=\"$cluster\",namespace=~\"$namespace\"}[$interval:$resolution]))",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "",
           "refId": "A"
@@ -185,10 +188,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "decimals": 0,
       "fieldConfig": {
         "defaults": {
@@ -289,8 +289,14 @@
       "tableColumn": "",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": true,
           "expr": "sum(irate(container_network_transmit_bytes_total{cluster=\"$cluster\",namespace=~\"$namespace\"}[$interval:$resolution]))",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "",
           "refId": "A"
@@ -312,42 +318,46 @@
     {
       "columns": [
         {
+          "$$hashKey": "object:40",
           "text": "Time",
           "value": "Time"
         },
         {
+          "$$hashKey": "object:41",
           "text": "Value #A",
           "value": "Value #A"
         },
         {
+          "$$hashKey": "object:42",
           "text": "Value #B",
           "value": "Value #B"
         },
         {
+          "$$hashKey": "object:43",
           "text": "Value #C",
           "value": "Value #C"
         },
         {
+          "$$hashKey": "object:44",
           "text": "Value #D",
           "value": "Value #D"
         },
         {
+          "$$hashKey": "object:45",
           "text": "Value #E",
           "value": "Value #E"
         },
         {
+          "$$hashKey": "object:46",
           "text": "Value #F",
           "value": "Value #F"
         },
         {
+          "$$hashKey": "object:47",
           "text": "pod",
           "value": "pod"
         }
       ],
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
       "fill": 1,
       "fontSize": "100%",
       "gridPos": {
@@ -487,54 +497,90 @@
       ],
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": false,
           "expr": "sum(irate(container_network_receive_bytes_total{cluster=\"$cluster\",namespace=~\"$namespace\"}[$interval:$resolution])) by (pod)",
           "format": "table",
           "instant": true,
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "refId": "A",
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": false,
           "expr": "sum(irate(container_network_transmit_bytes_total{cluster=\"$cluster\",namespace=~\"$namespace\"}[$interval:$resolution])) by (pod)",
           "format": "table",
           "instant": true,
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "refId": "B",
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": false,
           "expr": "sum(irate(container_network_receive_packets_total{cluster=\"$cluster\",namespace=~\"$namespace\"}[$interval:$resolution])) by (pod)",
           "format": "table",
           "instant": true,
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "refId": "C",
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": false,
           "expr": "sum(irate(container_network_transmit_packets_total{cluster=\"$cluster\",namespace=~\"$namespace\"}[$interval:$resolution])) by (pod)",
           "format": "table",
           "instant": true,
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "refId": "D",
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": false,
           "expr": "sum(irate(container_network_receive_packets_dropped_total{cluster=\"$cluster\",namespace=~\"$namespace\"}[$interval:$resolution])) by (pod)",
           "format": "table",
           "instant": true,
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "refId": "E",
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": false,
           "expr": "sum(irate(container_network_transmit_packets_dropped_total{cluster=\"$cluster\",namespace=~\"$namespace\"}[$interval:$resolution])) by (pod)",
           "format": "table",
           "instant": true,
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "refId": "F",
@@ -570,10 +616,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -618,8 +661,14 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": true,
           "expr": "sum(irate(container_network_receive_bytes_total{cluster=\"$cluster\",namespace=~\"$namespace\"}[$interval:$resolution])) by (pod)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
           "refId": "A",
@@ -663,10 +712,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -711,8 +757,14 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": true,
           "expr": "sum(irate(container_network_transmit_bytes_total{cluster=\"$cluster\",namespace=~\"$namespace\"}[$interval:$resolution])) by (pod)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
           "refId": "A",
@@ -776,10 +828,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -824,8 +873,14 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": true,
           "expr": "sum(irate(container_network_receive_packets_total{cluster=\"$cluster\",namespace=~\"$namespace\"}[$interval:$resolution])) by (pod)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
           "refId": "A",
@@ -869,10 +924,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -917,8 +969,14 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": true,
           "expr": "sum(irate(container_network_transmit_packets_total{cluster=\"$cluster\",namespace=~\"$namespace\"}[$interval:$resolution])) by (pod)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
           "refId": "A",
@@ -982,10 +1040,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -1030,8 +1085,14 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": true,
           "expr": "sum(irate(container_network_receive_packets_dropped_total{cluster=\"$cluster\",namespace=~\"$namespace\"}[$interval:$resolution])) by (pod)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
           "refId": "A",
@@ -1075,10 +1136,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": {},
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
@@ -1123,8 +1181,14 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "exemplar": true,
           "expr": "sum(irate(container_network_transmit_packets_dropped_total{cluster=\"$cluster\",namespace=~\"$namespace\"}[$interval:$resolution])) by (pod)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
           "refId": "A",
@@ -1184,6 +1248,7 @@
         "name": "datasource",
         "options": [],
         "query": "prometheus",
+        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1196,7 +1261,7 @@
           "text": "None",
           "value": ""
         },
-        "definition": "",
+        "definition": "label_values(kube_pod_info, cluster)",
         "hide": 2,
         "includeAll": false,
         "multi": false,
@@ -1204,7 +1269,7 @@
         "options": [],
         "query": {
           "query": "label_values(kube_pod_info, cluster)",
-          "refId": "Prometheus-cluster-Variable-Query"
+          "refId": "StandardVariableQuery"
         },
         "refresh": 1,
         "regex": "",
@@ -1350,6 +1415,6 @@
   "timezone": "UTC",
   "title": "Kubernetes / Networking / Namespace (Pods)",
   "uid": "8b7a8b326d7a6f1f04244066368c67af",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
